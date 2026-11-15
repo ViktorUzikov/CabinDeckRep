@@ -1,4 +1,5 @@
 import faulthandler
+import os
 import sys
 import traceback
 from datetime import datetime
@@ -22,6 +23,11 @@ from .food_dialog_interface import Ui_Dialog as FoodDialogUI
 from .interface import Ui_MainWindow
 from .local_model import load_model, is_loaded, StreamWorker
 from .passenger_dialog_interface import Ui_Dialog as PassengerDialogUI
+
+if sys.stdout is None:
+    sys.stdout = open(os.devnull, 'w')
+if sys.stderr is None:
+    sys.stderr = open(os.devnull, 'w')
 
 faulthandler.enable()
 

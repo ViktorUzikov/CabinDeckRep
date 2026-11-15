@@ -1,10 +1,15 @@
 from llama_cpp import Llama
 from huggingface_hub import hf_hub_download
 from PyQt6.QtCore import QThread, pyqtSignal
-from json import dumps, loads
-from .db import Database
-import os
+# from json import dumps, loads
+# from .db import Database
+import os, sys
 from pathlib import Path
+
+if sys.stdout is None:
+    sys.stdout = open(os.devnull, 'w')
+if sys.stderr is None:
+    sys.stderr = open(os.devnull, 'w')
 
 
 class UnloadedModel(Exception):
